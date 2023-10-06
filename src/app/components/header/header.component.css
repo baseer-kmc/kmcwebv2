@@ -1,7 +1,17 @@
-.bg-teal{
+.bg-teal {
     --bs-bg-opacity: 1;
     background: linear-gradient(to bottom, #001F3D, #383A3A);
 }
-.align-left{
+
+.align-left {
     text-align: left;
+}
+
+.home-bg {
+    background-image: url('../../../assets/home-bg-01.jpg');
+    background-size: cover;
+    /* Adjust this property as needed */
+    background-attachment: fixed;
+    position: relative;
+    /* Required for positioning the overlay */
 }
