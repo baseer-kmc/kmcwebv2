@@ -1,0 +1,36 @@
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-black custom-navbar">
+    <div class="container px-5">
+        <img class="site-logo" src="../../../assets/logo.png" />
+        <a class="navbar-brand">Kurnool Medical College</a>
+        <div class="collapse navbar-collapse">
+            <ul class="nav nav-tabs ms-auto mb-2 mb-lg-0 top-25">
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="selectedRoute==='/'"
+                        href="/" >Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="selectedRoute==='/gallery'"
+                        href="#/gallery" >Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="selectedRoute==='/members'"
+                        href="#/members" >Members</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="selectedRoute==='/register'"
+                        href="#/register" >Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="selectedRoute==='/news'"
+                        href="#/news" >News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="selectedRoute==='/contactus'"
+                        href="#/contactus" >Contact Us</a>
+                </li>
+            </ul>
+           
+        </div>
+    </div>
+</nav>

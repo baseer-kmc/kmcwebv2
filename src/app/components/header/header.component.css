@@ -1,0 +1,7 @@
+.bg-teal{
+    --bs-bg-opacity: 1;
+    background: linear-gradient(to bottom, #001F3D, #383A3A);
+}
+.align-left{
+    text-align: left;
+}

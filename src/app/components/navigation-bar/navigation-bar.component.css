@@ -1,0 +1,40 @@
+.site-logo{
+    position: static;
+    width:180px;
+    height:180px;
+    margin-top:120px;
+}
+.navbar-brand{
+    display: none;
+}
+.top-25{
+    margin-top:25px;
+}
+@media screen and (max-width: 500px) {
+    .site-logo {
+      display:none;
+    }
+    .navbar-brand{
+        display: block;
+    }
+  }
+.custom-navbar {
+    height: 70px; /* Adjust the height value as needed */
+}
+.bg-black{
+    --bs-bg-opacity: 1;
+    background: linear-gradient(to right, #222222, #000000);
+}
+.nav-tabs{
+    border-bottom: 0px;
+}
+.nav-item{
+    border: 1px solid #fff;
+    border-bottom: 0px;
+    border-radius: 8px 8px 0px 0px;
+}
+.nav-link{
+    color:#fff;
+}
+
+
