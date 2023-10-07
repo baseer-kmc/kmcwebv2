@@ -7,6 +7,8 @@
     text-align: left;
 }
 
+
+
 .home-bg {
     background-image: url('../../../assets/home-bg-01.jpg');
     background-size: cover;
@@ -20,9 +22,13 @@
     margin-top: 30px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     .onlyWeb {
         margin-top: 4px;
+    }
+    .no-margin {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
     }
 }
 
