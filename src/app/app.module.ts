@@ -12,7 +12,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { NewsComponent } from './pages/news/news.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { LightboxModule } from 'ngx-lightbox';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms'; 
 
 
 
@@ -33,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     LightboxModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

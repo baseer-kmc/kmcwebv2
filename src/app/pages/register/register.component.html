@@ -1,1 +1,436 @@
-<p>register works!</p>
+<section class="py-5 border-bottom page-background" id="features" style="padding-top:4px !important;">
+    <div class="container">
+        <div class="row" class="onlyWeb">&nbsp;</div>
+        <div class="row">
+            <div class="col-lg-12 coolBg">
+                <h2 class="h4 fw-bolder coolBgH1">Register</h2>
+            </div>
+        </div>
+        <div class="row" style="height:30px;">&nbsp;</div>
+        <div class="row gx-5">
+            <div class="col-5 col-sm-12">
+                <form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+                    <!-- PassportSizePhoto -->
+                    <div class="form-group">
+                        <div class="col-sm-12" style="padding-left: 0;">
+                            <div class="row">
+                                <div class="col-sm-2"
+                                    style="border:1px solid #1C2B4B; border-radius: 10px 10px 10px 10px; margin-left: 10px;min-height: 200px;width:240px;">
+                                    <ng-container *ngIf="memberForm.controls['passportSizePhoto'].value!==''">
+                                        <img style="max-height: 200px;min-height: 200px;"
+                                            [src]="memberForm.controls['passportSizePhoto'].value">
+                                    </ng-container>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12" style="margin-top: 10px;">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <input type="file" style="display:none;" class="form-control"
+                                                (change)="selectPhoto($event)" #fileInput id="passportSizePhoto">
+                                            <button class="btn btn-primary" (click)="choosePhoto()">Choose Passport Size
+                                                Photo</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px;">
+                            <div class="row"
+                                style="background-color: #1C2B4B; border-radius: 16px 16px;color:#fff;margin-bottom: 10px;">
+                                <label class="col-sm-12 col-form-label">Full Name:</label>
+                            </div>
+                            <div class="row" formGroupName="fullName">
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" class="form-control" formControlName="firstName"
+                                        placeholder="First Name">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" class="form-control" formControlName="middleName"
+                                        placeholder="Middle Name">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" class="form-control" formControlName="lastName"
+                                        placeholder="Last Name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px;">
+                            <div class="row"
+                                style="background-color: #1C2B4B; border-radius: 16px 16px;color:#fff;margin-bottom: 10px;">
+                                <label for="sex" class="col-sm-6 col-form-label">Sex:</label>
+                                <label for="sex" class="col-sm-6 col-form-label">Date Of Birth:</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <select class="form-control" id="sex" formControlName="sex">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6"><input type="date" class="form-control" id="dateOfBirth"
+                                        formControlName="dateOfBirth"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" formGroupName="placeOfBirth">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px">
+                            <div class="row"
+                                style="background-color: #1C2B4B; border-radius: 16px 16px;color:#fff;margin-bottom: 10px;">
+                                <label for="sex" class="col-sm-12 col-form-label">Place Of Birth:</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" class="form-control" formControlName="village"
+                                        placeholder="Village">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" class="form-control" formControlName="taluk"
+                                        placeholder="Taluk">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" class="form-control" formControlName="district"
+                                        placeholder="District">
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:8px;">
+                                <div class="col-sm-6">
+                                    <select class="form-control" formControlName="state" placeholder="State">
+                                        <option value="">State</option>
+                                        <option [value]="state" *ngFor="let state of allIndianStates">{{state}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select class="form-control" formControlName="country" placeholder="Country">
+                                        <option value="">Country</option>
+                                        <option value="India">India</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MbbsOrPg -->
+                    <div class="form-group">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 20px">
+                            <div class="row" style="background-color: #1C2B4B; border-radius: 16px 16px;color:#fff;">
+                                <label class="col-sm-12 col-form-label" for="mbbsOrPg">MBBS or PG:</label>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-4 col-form-label">Start:</label>
+                                <label class="col-sm-4 col-form-label">End:</label>
+                                <label class="col-sm-4 col-form-label">Institute Name:</label>
+                            </div>
+                            <div class="row" formGroupName="mbbsOrPg">
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="mbbsOrPg" formControlName="startDate"
+                                        placeholder="Start Date">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="mbbsOrPg" formControlName="endDate"
+                                        placeholder="End Date">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" class="form-control" id="mbbsOrPg"
+                                        formControlName="institutionName" placeholder="Institution Name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HouseSurgency -->
+                    <div class="form-group">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px">
+                            <div class="row" style="background-color: #1C2B4B; border-radius: 16px 16px;color:#fff;">
+                                <label class="col-sm-12 col-form-label" for="mbbsOrPg">House Surgency:</label>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-4 col-form-label">Start:</label>
+                                <label class="col-sm-4 col-form-label">End:</label>
+                                <label class="col-sm-4 col-form-label">Institute Name:</label>
+                            </div>
+                            <div class="row" formGroupName="houseSurgency">
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="houseSurgency"
+                                        formControlName="startDate" placeholder="Start Date">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="houseSurgency" formControlName="endDate"
+                                        placeholder="End Date">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" class="form-control" id="houseSurgency"
+                                        formControlName="institutionName" placeholder="Institution Name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Diploma -->
+                    <div class="form-group">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px">
+                            <div class="row" style="background-color: #1C2B4B; border-radius: 16px 16px;color:#fff;">
+                                <label class="col-sm-12 col-form-label" for="mbbsOrPg">Diploma:</label>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-4 col-form-label">Start:</label>
+                                <label class="col-sm-4 col-form-label">End:</label>
+                                <label class="col-sm-4 col-form-label">Institute Name:</label>
+                            </div>
+                            <div class="row" formGroupName="diploma">
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="diploma" formControlName="startDate"
+                                        placeholder="Start Date">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="diploma" formControlName="endDate"
+                                        placeholder="End Date">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" class="form-control" id="diploma"
+                                        formControlName="institutionName" placeholder="Institution Name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Degree -->
+                    <div class="form-group">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px">
+                            <div class="row" style="background-color: #1C2B4B; border-radius: 16px 16px;color:#fff;">
+                                <label class="col-sm-12 col-form-label" for="mbbsOrPg">Degree:</label>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-4 col-form-label">Start:</label>
+                                <label class="col-sm-4 col-form-label">End:</label>
+                                <label class="col-sm-4 col-form-label">Institute Name:</label>
+                            </div>
+                            <div class="row" formGroupName="degree">
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="degree" formControlName="startDate"
+                                        placeholder="Start Date">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="degree" formControlName="endDate"
+                                        placeholder="End Date">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" class="form-control" id="degree"
+                                        formControlName="institutionName" placeholder="Institution Name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PostDoctoral -->
+                    <div class="form-group">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px">
+                            <div class="row" style="background-color: #1C2B4B; border-radius: 16px 16px;color:#fff;">
+                                <label class="col-sm-12 col-form-label" for="mbbsOrPg">Post Doctoral:</label>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-4 col-form-label">Start:</label>
+                                <label class="col-sm-4 col-form-label">End:</label>
+                                <label class="col-sm-4 col-form-label">Institute Name:</label>
+                            </div>
+                            <div class="row" formGroupName="postDoctoral">
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="postDoctoral"
+                                        formControlName="startDate" placeholder="Start Date">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="postDoctoral" formControlName="endDate"
+                                        placeholder="End Date">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" class="form-control" id="postDoctoral"
+                                        formControlName="institutionName" placeholder="Institution Name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- GuardianFullName -->
+                    <div class="form-group">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px;">
+                            <label for="guardianFullName">Guardian's Full Name:</label>
+                            <input type="text" maxlength="200" class="form-control" id="guardianFullName"
+                                formControlName="guardianFullName">
+                        </div>
+                    </div>
+
+                    <!-- Spouse Information -->
+                    <div class="form-group">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input class="form-check-input" type="checkbox" id="isSpouseDoctor"
+                                        formControlName="isSpouseDoctor">
+                                    <label class="form-check-label" for="isSpouseDoctor">&nbsp;&nbsp;Is Spouse a
+                                        Doctor?</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input type="text" maxlength="200" placeholder="Spouse Full Name"
+                                        class="form-control" id="spouseFullName" formControlName="spouseFullName">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- IsAlumni -->
+                    <div class="form-check" style="margin-top: 10px">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input class="form-check-input" type="checkbox" id="isAlumni"
+                                        formControlName="isAlumni">
+                                    <label class="form-check-label" for="isAlumni">&nbsp;&nbsp;Is Alumni?</label>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="memberForm.controls['isAlumni'].value">
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="yearOrStudy" formControlName="yearOrStudy">
+                                        <option value="">Year of Study</option>
+                                        <option [value]="year" *ngFor="let year of allYears">{{year}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="!memberForm.controls['isAlumni'].value">
+                                <div class="col-sm-12">
+                                    <input type="text" maxlength="200" class="form-control"
+                                        placeholder="College of Study" id="collegeOfStudy"
+                                        formControlName="collegeOfStudy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 10px">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label for="presentDesignation">Present Designation:</label>
+                                    <input type="text" maxlength="200" class="form-control" id="presentDesignation"
+                                        formControlName="presentDesignation">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 10px" formGroupName="presentAddress">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px">
+                            <div class="row"
+                                style="background-color: #1C2B4B; border-radius: 16px 16px;color:#fff;margin-bottom: 10px;">
+                                <label class="col-sm-6 col-form-label">Present Address:</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" placeholder="Locality" class="form-control"
+                                        id="presentLocality" formControlName="locality">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" placeholder="Town" class="form-control"
+                                        id="presentTown" formControlName="town">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" placeholder="Pin Code" class="form-control"
+                                        id="presentPin" formControlName="pin">
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 6px">
+                                <div class="col-sm-3">
+                                    <select placeholder="State" class="form-control" id="presentState"
+                                        formControlName="state">
+                                        <option value="">State</option>
+                                        <option [value]="state" *ngFor="let state of allIndianStates">{{state}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select placeholder="Country" class="form-control" id="presentCountry"
+                                        formControlName="country">
+                                        <option value="">Country</option>
+                                        <option value="India">India</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" maxlength="200" placeholder="Mobile No" class="form-control"
+                                        id="presentMobileNo" formControlName="mobileNo">
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" maxlength="200" placeholder="Email Address" class="form-control"
+                                        id="presentEmailAddress" formControlName="emailAddress">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 10px" formGroupName="permanentAddress">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px">
+                            <div class="row"
+                                style="background-color: #1C2B4B; border-radius: 16px 16px;color:#fff;margin-bottom: 10px;">
+                                <label class="col-sm-6 col-form-label">Permenant Address:</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" placeholder="Locality" class="form-control"
+                                        id="permanentLocality" formControlName="locality">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" placeholder="Town" class="form-control"
+                                        id="permanentTown" formControlName="town">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" maxlength="200" placeholder="Pin Code" class="form-control"
+                                        id="permanentPin" formControlName="pin">
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 6px">
+                                <div class="col-sm-3">
+                                    <select placeholder="State" class="form-control" id="permanentState"
+                                        formControlName="state">
+                                        <option value="">State</option>
+                                        <option [value]="state" *ngFor="let state of allIndianStates">{{state}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select placeholder="Country" class="form-control" id="permanentCountry"
+                                        formControlName="country">
+                                        <option value="">Country</option>
+                                        <option value="India">India</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" maxlength="200" placeholder="Mobile No" class="form-control"
+                                        id="permanentMobileNo" formControlName="mobileNo">
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" maxlength="200" placeholder="Email Address" class="form-control"
+                                        id="permanentEmailAddress" formControlName="emailAddress">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 10px">
+                        <div class="col-sm-12" style="padding-left: 0;margin-top: 10px">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <ng-hcaptcha formControlName="captcha"></ng-hcaptcha>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit Membership
+                        Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
