@@ -15,11 +15,31 @@
     position: relative;
     /* Required for positioning the overlay */
 }
-.onlyWeb{
+
+.onlyWeb {
     margin-top: 30px;
 }
+
 @media screen and (max-width: 500px) {
     .onlyWeb {
         margin-top: 4px;
     }
-  }
+}
+
+.box {
+    height: 200px;
+    width: 300px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.hid-box {
+    top: 100%;
+    position: relative;
+    transition: all .3s ease-out;
+    height: 100%;
+}
+
+.slide-up {
+    top: 0;
+}
