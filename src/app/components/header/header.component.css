@@ -11,7 +11,7 @@
     background-image: url('../../../assets/home-bg-01.jpg');
     background-size: cover;
     /* Adjust this property as needed */
-    background-attachment: fixed;
+    background-attachment: scroll;
     position: relative;
     /* Required for positioning the overlay */
 }
