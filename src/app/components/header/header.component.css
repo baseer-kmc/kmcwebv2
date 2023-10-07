@@ -30,6 +30,9 @@
         margin-top: 0 !important;
         margin-bottom: 0 !important;
     }
+    .home-bg {
+        background-image: url('../../../assets/home-bg-02.jpg');
+    }
 }
 
 .box {
