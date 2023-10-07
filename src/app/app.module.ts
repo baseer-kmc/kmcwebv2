@@ -11,6 +11,10 @@ import { MembersComponent } from './pages/members/members.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { NewsComponent } from './pages/news/news.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { LightboxModule } from 'ngx-lightbox';
+import { FormsModule } from '@angular/forms'; 
+
+
 
 @NgModule({
   declarations: [
@@ -27,7 +31,9 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    LightboxModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

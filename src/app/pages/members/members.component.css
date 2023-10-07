@@ -1,0 +1,93 @@
+.nav-tabs.flex-column {
+    border-bottom: 0;
+    border-right: 1px solid #dee2e6;
+}
+
+.nav-tabs.flex-column .nav-item.show .nav-link,
+.nav-tabs.flex-column .nav-link.active {
+    border-color: #dee2e6 transparent #dee2e6 #dee2e6;
+}
+
+.nav-tabs.flex-column .nav-link {
+    border-bottom-left-radius: 0.25rem;
+    border-top-right-radius: 0;
+    margin-right: -1px;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.nav-link {
+    cursor: pointer;
+    color: #000000;
+}
+
+.page-background {
+    --bs-bg-opacity: 1;
+    background: linear-gradient(to bottom, #96B7FF, #FFFFFF);
+    min-height: 80vh;
+}
+
+.centerAlign {
+    text-align: center;
+}
+
+.onlyWeb {
+    height: 120px;
+}
+
+@media screen and (max-width: 500px) {
+    .onlyWeb {
+        display: none;
+    }
+}
+
+.coolBg {
+    margin-top: 10px;
+    color: #EDEDED;
+    background: linear-gradient(to right, #001F3D, #383A3A);
+    border-radius: 8px 8px 8px 8px;
+}
+
+.coolBgH1 {
+    margin-top: 0.5rem;
+}
+
+.doctorBox {
+    color: #565656;
+    margin: 4px;
+}
+
+.business-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px auto;
+    min-height: 250px;
+    max-height: 250px;
+    background-image: url('../../../assets/doctor.png');
+    /* Replace 'doctor-icon.png' with your icon image path */
+    background-size: cover;
+    /* Adjust as needed to fit the image */
+    background-repeat: no-repeat;
+}
+
+.doctor-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    min-height: 90px;
+}
+
+.membership-id,
+.phone-number,
+.email,
+.address {
+    font-size: 14px;
+    margin: 4px 0;
+}

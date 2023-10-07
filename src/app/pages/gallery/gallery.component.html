@@ -1,13 +1,18 @@
 <section class="py-5 border-bottom page-background" id="features" style="padding-top:4px !important;">
     <div class="container">
-        <div class="row" style="height:120px;">&nbsp;</div>
+        <div class="row" class="onlyWeb">&nbsp;</div>
         <div class="row">
-            <div class="col-lg-12">
-                <h2 class="h4 fw-bolder">Gallery</h2>
+            <div class="col-lg-12 coolBg">
+                <h2 class="h4 fw-bolder coolBgH1">Gallery</h2>
             </div>
         </div>
         <div class="row" style="height:30px;">&nbsp;</div>
-        <div class="row gx-5">
+        <div class="row">
+            <div class="col-5 col-sm-12 centerAlign" *ngIf="!dataLoaded">
+                <img src="../../../assets/loading-gif.gif" />
+            </div>
+        </div>
+        <div class="row gx-5" *ngIf="dataLoaded">
             <div class="col-5 col-sm-2">
                 <div class="nav flex-column nav-tabs h-100">
                     <a *ngFor="let album of albumsList" (click)="switchAlbum(album)"
@@ -17,13 +22,12 @@
             <div class="col-7 col-sm-10">
                 <div class="tab-content">
                     <div class="row">
-                        <div class="col-sm-2" *ngFor="let photo of albumPhotosList" style="margin: 12px;">
-                            <img [src]="photo.ThumbnailPhoto" />
+                        <div class="col-sm-2" *ngFor="let photo of albumPhotosList; let i=index" style="margin: 12px;">
+                            <img [src]="photo.thumb" (click)="open(i)" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </section>

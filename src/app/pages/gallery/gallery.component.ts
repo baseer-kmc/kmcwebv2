@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GalleryService } from 'src/app/services/gallery.service';
 import * as _ from 'lodash';
+import { Lightbox } from 'ngx-lightbox';
+
 
 @Component({
   selector: 'app-gallery',
@@ -12,8 +14,9 @@ export class GalleryComponent implements OnInit {
   photosList: any;
   albumPhotosList: any;
   selectedAlbum: any;
+  dataLoaded:boolean=false;
 
-  constructor(private galleryService: GalleryService) { }
+  constructor(private galleryService: GalleryService, private _lightbox: Lightbox) { }
 
   ngOnInit(): void {
     this.galleryService.getGalleryPhotos().subscribe((photos: any) => {
@@ -26,7 +29,15 @@ export class GalleryComponent implements OnInit {
       this.selectedAlbum = this.albumsList[0];
       this.albumPhotosList = _.chain(photos)
         .filter((x: any) => x.AlbumName === this.selectedAlbum)
+        .map((x: any) => {
+          return {
+            src: x.LargePhoto,
+            caption: '',
+            thumb: x.ThumbnailPhoto
+          }
+        })
         .value();
+        this.dataLoaded=true;
     });
   }
 
@@ -34,6 +45,23 @@ export class GalleryComponent implements OnInit {
     this.selectedAlbum = album;
     this.albumPhotosList = _.chain(this.photosList)
       .filter((x: any) => x.AlbumName === this.selectedAlbum)
+      .map((x: any) => {
+        return {
+          src: x.LargePhoto,
+          caption: '',
+          thumb: x.ThumbnailPhoto
+        }
+      })
       .value();
+  }
+
+  open(index: number): void {
+    // open lightbox
+    this._lightbox.open(this.albumPhotosList, index);
+  }
+
+  close(): void {
+    // close lightbox programmatically
+    this._lightbox.close();
   }
 }
