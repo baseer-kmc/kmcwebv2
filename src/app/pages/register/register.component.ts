@@ -1,5 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MembersService } from 'src/app/services/members.service';
 import { indianStates } from 'src/environments/environment';
 
 @Component({
@@ -16,7 +18,7 @@ export class RegisterComponent {
   allYears:any;
   allIndianStates:any;
   
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private membersService: MembersService, private router: Router) { }
 
   ngOnInit(): void {
     this.allIndianStates = indianStates;
@@ -32,8 +34,18 @@ export class RegisterComponent {
   }
 
   onSubmit() {
+    if (this.memberForm.invalid) {
+      // If form is invalid, mark all fields as touched to show errors.
+      this.memberForm.markAllAsTouched();
+      return;
+  }
+
     let formData = this.memberForm.value;
-    console.log('formData', formData);
+    const that=this;
+
+    that.membersService.addNewMember(formData).subscribe((res:any)=>{
+      that.router.navigate(['/register-confirm']);
+    });
   }
 
   selectPhoto(event:any){
@@ -55,24 +67,24 @@ export class RegisterComponent {
     this.memberForm = this.fb.group({
       passportSizePhoto: [''],
       fullName: this.fb.group({
-        firstName: [''],
+        firstName: ['',Validators.required],
         middleName: [''],
-        lastName: ['']
+        lastName: ['',Validators.required]
       }),
       sex: ['Male'],
-      dateOfBirth: [''],
+      dateOfBirth: ['',Validators.required],
       placeOfBirth: this.fb.group({
-        village: [''],
-        taluk: [''],
-        district: [''],
-        state: [''],
-        country: ['']
+        village: ['',Validators.required],
+        taluk: ['',Validators.required],
+        district: ['',Validators.required],
+        state: ['',Validators.required],
+        country: ['',Validators.required]
       }),
       // MbbsOrPg
       mbbsOrPg: this.fb.group({
-        startDate: [''],
-        endDate: [''],
-        institutionName: [''],
+        startDate: ['',Validators.required],
+        endDate: ['',Validators.required],
+        institutionName: ['',Validators.required],
       }),
 
       // HouseSurgency
@@ -102,7 +114,7 @@ export class RegisterComponent {
         endDate: [''],
         institutionName: [''],
       }),
-      guardianFullName: [''],
+      guardianFullName: ['',Validators.required],
       spouseFullName: [''],
       isSpouseDoctor: [false],
       isAlumni: [false],
@@ -110,13 +122,13 @@ export class RegisterComponent {
       collegeOfStudy: [''],
       presentDesignation: [''],
       presentAddress: this.fb.group({
-        locality: [''],
-        town: [''],
-        pin: [''],
-        state: [''],
-        country: [''],
-        mobileNo: [''],
-        emailAddress: ['']
+        locality: ['',Validators.required],
+        town: ['',Validators.required],
+        pin: ['',Validators.required],
+        state: ['',Validators.required],
+        country: ['',Validators.required],
+        mobileNo: ['',Validators.required],
+        emailAddress: ['',Validators.required]
       }),
       permanentAddress: this.fb.group({
         locality: [''],
@@ -126,8 +138,7 @@ export class RegisterComponent {
         country: [''],
         mobileNo: [''],
         emailAddress: ['']
-      }),
-      captcha: ['']
+      })
     });
   }
 

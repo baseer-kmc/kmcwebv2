@@ -12,7 +12,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { NewsComponent } from './pages/news/news.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { LightboxModule } from 'ngx-lightbox';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { RegisterConfirmationComponent } from './pages/register-confirmation/register-confirmation.component'; 
 
 
 
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
     MembersComponent,
     RegisterComponent,
     NewsComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    RegisterConfirmationComponent
   ],
   imports: [
     BrowserModule,

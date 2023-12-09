@@ -14,4 +14,8 @@ export class MembersService {
     return this.http.get(`${functionsPath}`);
   }
 
+  addNewMember(member: any){
+    let functionsPath = `${environment.functionsPath}/addNewMemberFunction`
+    return this.http.post(`${functionsPath}`,member);
+  }
 }
