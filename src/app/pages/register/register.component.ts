@@ -15,15 +15,15 @@ export class RegisterComponent {
   isCaptchaVerified = false;
   captchaCode: string = "";
   showConfirmation: boolean = false;
-  allYears:any;
-  allIndianStates:any;
-  
+  allYears: any;
+  allIndianStates: any;
+
   constructor(private fb: FormBuilder, private membersService: MembersService, private router: Router) { }
 
   ngOnInit(): void {
     this.allIndianStates = indianStates;
     this.allYears = new Array();
-    for(let i=1900; i<2023;i++){
+    for (let i = 1900; i < 2023; i++) {
       this.allYears.push(`${i}`);
     }
     this.initForm();
@@ -34,21 +34,15 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    if (this.memberForm.invalid) {
-      // If form is invalid, mark all fields as touched to show errors.
-      this.memberForm.markAllAsTouched();
-      return;
-  }
-
     let formData = this.memberForm.value;
-    const that=this;
+    const that = this;
 
-    that.membersService.addNewMember(formData).subscribe((res:any)=>{
+    that.membersService.addNewMember(formData).subscribe((res: any) => {
       that.router.navigate(['/register-confirm']);
     });
   }
 
-  selectPhoto(event:any){
+  selectPhoto(event: any) {
     this.readLargeFileAsBase64(event.target.files[0]);
   }
 
@@ -67,24 +61,24 @@ export class RegisterComponent {
     this.memberForm = this.fb.group({
       passportSizePhoto: [''],
       fullName: this.fb.group({
-        firstName: ['',Validators.required],
+        firstName: ['', Validators.required],
         middleName: [''],
-        lastName: ['',Validators.required]
+        lastName: ['', Validators.required]
       }),
       sex: ['Male'],
-      dateOfBirth: ['',Validators.required],
+      dateOfBirth: ['', Validators.required],
       placeOfBirth: this.fb.group({
-        village: ['',Validators.required],
-        taluk: ['',Validators.required],
-        district: ['',Validators.required],
-        state: ['',Validators.required],
-        country: ['',Validators.required]
+        village: ['', Validators.required],
+        taluk: ['', Validators.required],
+        district: ['', Validators.required],
+        state: ['', Validators.required],
+        country: ['', Validators.required]
       }),
       // MbbsOrPg
       mbbsOrPg: this.fb.group({
-        startDate: ['',Validators.required],
-        endDate: ['',Validators.required],
-        institutionName: ['',Validators.required],
+        startDate: ['', Validators.required],
+        endDate: ['', Validators.required],
+        institutionName: ['', Validators.required],
       }),
 
       // HouseSurgency
@@ -114,7 +108,7 @@ export class RegisterComponent {
         endDate: [''],
         institutionName: [''],
       }),
-      guardianFullName: ['',Validators.required],
+      guardianFullName: ['', Validators.required],
       spouseFullName: [''],
       isSpouseDoctor: [false],
       isAlumni: [false],
@@ -122,13 +116,13 @@ export class RegisterComponent {
       collegeOfStudy: [''],
       presentDesignation: [''],
       presentAddress: this.fb.group({
-        locality: ['',Validators.required],
-        town: ['',Validators.required],
-        pin: ['',Validators.required],
-        state: ['',Validators.required],
-        country: ['',Validators.required],
-        mobileNo: ['',Validators.required],
-        emailAddress: ['',Validators.required]
+        locality: ['', Validators.required],
+        town: ['', Validators.required],
+        pin: ['', Validators.required],
+        state: ['', Validators.required],
+        country: ['', Validators.required],
+        mobileNo: ['', Validators.required],
+        emailAddress: ['', Validators.required]
       }),
       permanentAddress: this.fb.group({
         locality: [''],
@@ -145,7 +139,7 @@ export class RegisterComponent {
   onVerify(token: string) {
     // The verification process was successful.
     // You can verify the token on your server now.
-    console.log('token',token);
+    console.log('token', token);
   }
 
   onExpired(response: any) {
