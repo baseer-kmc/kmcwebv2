@@ -18,26 +18,29 @@ export class MembersComponent implements OnInit {
 
   ngOnInit(): void {
     this.membersService.getMembersList().subscribe((members: any) => {
+      
       this.itemsList = members;
       this.categoryList = _.chain(this.itemsList)
-        .map(x => x.Year)
+        .map(x => x.year)
         .uniq()
+        .orderBy(x=> Number(x), 'asc')
         .value();
+
+      console.log('categoryList',this.categoryList);
 
       this.selectedCategory = this.categoryList[0];
       this.categoryItemsList = _.chain(this.itemsList)
-        .filter((x: any) => x.Year === this.selectedCategory)
-        .orderBy('SerialNumber')
+        .filter((x: any) => x.year === this.selectedCategory)
+        .orderBy('serialNumber')
         .value();
       this.dataLoaded = true;
-      console.log('this.categoryItemsList', this.categoryItemsList);
     });
   }
 
   switchCategory() {
     this.categoryItemsList = _.chain(this.itemsList)
-      .filter((x: any) => x.Year === this.selectedCategory)
-      .orderBy('SerialNumber')
+      .filter((x: any) => x.year === this.selectedCategory)
+      .orderBy('serialNumber')
       .value();
   }
 

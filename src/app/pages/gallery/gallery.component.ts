@@ -22,18 +22,18 @@ export class GalleryComponent implements OnInit {
     this.galleryService.getGalleryPhotos().subscribe((photos: any) => {
       this.photosList = photos;
       this.albumsList = _.chain(photos)
-        .map(x => x.AlbumName)
+        .map(x => x.albumName)
         .uniq()
         .value();
-      console.log(this.albumsList, 'this.albumsList')
+
       this.selectedAlbum = this.albumsList[0];
       this.albumPhotosList = _.chain(photos)
-        .filter((x: any) => x.AlbumName === this.selectedAlbum)
+        .filter((x: any) => x.albumName === this.selectedAlbum)
         .map((x: any) => {
           return {
-            src: x.LargePhoto,
+            src: x.storagePath,
             caption: '',
-            thumb: x.ThumbnailPhoto
+            thumb: x.thumbnailStoragePath
           }
         })
         .value();
@@ -44,12 +44,12 @@ export class GalleryComponent implements OnInit {
   switchAlbum(album: string) {
     this.selectedAlbum = album;
     this.albumPhotosList = _.chain(this.photosList)
-      .filter((x: any) => x.AlbumName === this.selectedAlbum)
+      .filter((x: any) => x.albumName === this.selectedAlbum)
       .map((x: any) => {
         return {
-          src: x.LargePhoto,
+          src: x.storagePath,
           caption: '',
-          thumb: x.ThumbnailPhoto
+          thumb: x.thumbnailStoragePath
         }
       })
       .value();

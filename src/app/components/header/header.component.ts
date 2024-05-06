@@ -14,4 +14,8 @@ export class HeaderComponent implements OnInit {
       that.showSlide=true;
     }, 2000);
   }
+
+  getNews(){
+    
+  }
 }

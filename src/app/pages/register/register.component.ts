@@ -132,7 +132,8 @@ export class RegisterComponent {
         country: [''],
         mobileNo: [''],
         emailAddress: ['']
-      })
+      }),
+      paymentReferenceInformation: [''],
     });
   }
 

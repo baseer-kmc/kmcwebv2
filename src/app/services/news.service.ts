@@ -5,17 +5,12 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class MembersService {
+export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  getMembersList() {
-    let functionsPath = `${environment.functionsPath}/ListMembers`
+  getNews() {
+    let functionsPath = `${environment.functionsPath}/ListNews`
     return this.http.get(`${functionsPath}`);
-  }
-
-  addNewMember(member: any){
-    let functionsPath = `${environment.functionsPath}/SubmitRegistration`
-    return this.http.post(`${functionsPath}`,member);
   }
 }
