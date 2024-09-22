@@ -7,6 +7,7 @@ import { MembersComponent } from './pages/members/members.component';
 import { NewsComponent } from './pages/news/news.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { RegisterConfirmationComponent } from './pages/register-confirmation/register-confirmation.component';
+import { PreviouscommiteeComponent } from './pages/previouscommitee/previouscommitee.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'news', component: NewsComponent },
   { path: 'contactus', component: ContactUsComponent },
   { path: 'register-confirm', component: RegisterConfirmationComponent },
+  { path: 'prev-committee', component: PreviouscommiteeComponent },
 ];
 
 @NgModule({

@@ -31,6 +31,7 @@ export class RegisterComponent {
 
   choosePhoto() {
     this.fileInput.nativeElement.click();
+    return false;
   }
 
   onSubmit() {

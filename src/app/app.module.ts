@@ -13,7 +13,8 @@ import { NewsComponent } from './pages/news/news.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { LightboxModule } from 'ngx-lightbox';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
-import { RegisterConfirmationComponent } from './pages/register-confirmation/register-confirmation.component'; 
+import { RegisterConfirmationComponent } from './pages/register-confirmation/register-confirmation.component';
+import { PreviouscommiteeComponent } from './pages/previouscommitee/previouscommitee.component'; 
 
 
 
@@ -28,7 +29,8 @@ import { RegisterConfirmationComponent } from './pages/register-confirmation/reg
     RegisterComponent,
     NewsComponent,
     ContactUsComponent,
-    RegisterConfirmationComponent
+    RegisterConfirmationComponent,
+    PreviouscommiteeComponent
   ],
   imports: [
     BrowserModule,
