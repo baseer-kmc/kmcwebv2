@@ -44,4 +44,8 @@ export class MembersComponent implements OnInit {
       .value();
   }
 
+  replaceSlashN(address: any){
+    return address.replace(/\\n/g, '');
+  }
+
 }
