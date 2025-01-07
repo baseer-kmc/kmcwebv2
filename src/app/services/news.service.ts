@@ -10,7 +10,7 @@ export class NewsService {
   constructor(private http: HttpClient) { }
 
   getNews() {
-    let functionsPath = `${environment.functionsPath}/ListNews`
+    let functionsPath = `${environment.apiPath}/GetNews`
     return this.http.get(`${functionsPath}`);
   }
 }
