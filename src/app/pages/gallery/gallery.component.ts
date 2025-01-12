@@ -31,9 +31,9 @@ export class GalleryComponent implements OnInit {
         .filter((x: any) => x.albumName === this.selectedAlbum)
         .map((x: any) => {
           return {
-            src: x.storagePath,
+            src: x.largePhoto,
             caption: '',
-            thumb: x.thumbnailStoragePath
+            thumb: x.thumbnailPhoto
           }
         })
         .value();
@@ -47,9 +47,9 @@ export class GalleryComponent implements OnInit {
       .filter((x: any) => x.albumName === this.selectedAlbum)
       .map((x: any) => {
         return {
-          src: x.storagePath,
+          src: x.largePhoto,
           caption: '',
-          thumb: x.thumbnailStoragePath
+          thumb: x.thumbnailPhoto
         }
       })
       .value();
