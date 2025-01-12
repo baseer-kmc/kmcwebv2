@@ -10,7 +10,7 @@ export class GalleryService {
   constructor(private http: HttpClient) { }
   
   getGalleryPhotos() {
-    let functionsPath = `${environment.functionsPath}/listPhotos`
+    let functionsPath = `${environment.apiPath}/GetPhotos` 
     return this.http.get(`${functionsPath}`);
   }
 }
