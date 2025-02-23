@@ -10,12 +10,12 @@ export class MembersService {
   constructor(private http: HttpClient) { }
 
   getMembersList() {
-    let functionsPath = `${environment.functionsPath}/ListMembers`
-    return this.http.get(`${functionsPath}`);
+    let listMembersPath = `${environment.apiPath}/web/Members`
+    return this.http.get(listMembersPath);
   }
 
   addNewMember(member: any){
-    let functionsPath = `${environment.functionsPath}/SubmitRegistration`
-    return this.http.post(`${functionsPath}`,member);
+    let addNewMemberPath = `${environment.apiPath}/web/SubmitRegistration`
+    return this.http.post(addNewMemberPath,member);
   }
 }

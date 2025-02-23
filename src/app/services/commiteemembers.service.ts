@@ -5,12 +5,12 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class GalleryService {
+export class CommiteeMembersService {
 
   constructor(private http: HttpClient) { }
-  
-  getGalleryPhotos() {
-    let galleryPath = `${environment.apiPath}/web/Photos` 
-    return this.http.get(galleryPath);
+
+  getMembers() {
+    let commiteeMembersPath = `${environment.apiPath}web/CommiteeMembers`
+    return this.http.get(commiteeMembersPath);
   }
 }

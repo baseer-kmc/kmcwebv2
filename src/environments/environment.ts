@@ -1,6 +1,5 @@
 export const environment = {
-    functionsPath: "https://kmcfunctionsv2.azurewebsites.net/api",
-    apiPath: "https://restmenu-f8cmcxgafmgdc2e9.southindia-01.azurewebsites.net/KmcAdmin",
+    apiPath: "https://kmcadmin-grc2dthsaqfcbwgf.centralindia-01.azurewebsites.net/",
     captchaSiteKey: '10000000-ffff-ffff-ffff-000000000001',
     captchaSecret: '0x0000000000000000000000000000000000000000',
     googleTrackingCode: ''
