@@ -1,29 +1,28 @@
 <section class="py-5 border-bottom page-background" id="features" style="padding-top:4px !important;">
-    <div class="container">
-        <div class="row" class="onlyWeb">&nbsp;</div>
-      <div class="row mb-4">
-        <div class="col-lg-12">
-          <h2 class="h4 fw-bolder text-center coolBgH1">Previous Committee Members</h2>
-        </div>
+  <div class="container">
+    <div class="row" class="onlyWeb">&nbsp;</div>
+    <div class="row mb-4">
+      <div class="col-lg-12">
+        <h2 class="h4 fw-bolder text-center coolBgH1">Previous Committee Members</h2>
       </div>
-      <div class="row">
-        <!-- Begin Card for a Committee Member -->
+    </div>
+    <div class="row">
+      <!-- Begin Card for a Committee Member -->
+      <ng-container *ngFor="let member of itemsList">
         <div class="col-md-6 col-lg-3 mb-3">
           <div class="card h-100 shadow-sm">
-            <img src="https://kmcfunctionsgroup9763.blob.core.windows.net/gallery/2cf23599-58a3-4e6b-95eb-234e7c71eafa.jpg" 
-                 class="card-img-top text-center" style="width: 250px;margin: 0 auto;" alt="Ex Chairman">
+            <img
+              [src]="member.photoPath"
+              class="card-img-top text-center" style="width: 250px;margin: 0 auto;" [alt]="member.memberName">
             <div class="card-body">
-              <h5 class="card-title">Ex Chairman</h5>
+              <h5 class="card-title">{{member.memberName}}</h5>
               <p class="card-text">
-                Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content
+                {{member.description}}
               </p>
             </div>
           </div>
         </div>
-        <!-- End Card -->
-        
-        <!-- Repeat card markup for additional committee members -->
-      </div>
+      </ng-container>
     </div>
-  </section>
-  
+  </div>
+</section>
