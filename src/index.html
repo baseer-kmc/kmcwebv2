@@ -26,6 +26,24 @@
   <!-- Core theme JS-->
   <script src="assets/js/scripts.js"></script>
   <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+  <script>
+  (function checkForUpdate() {
+    fetch('/assets/version.json', { cache: 'no-store' })
+      .then(response => response.json())
+      .then(version => {
+        const currentVersion = localStorage.getItem('appVersion');
+        if (currentVersion && currentVersion !== version.appVersion) {
+          console.log('New version detected. Reloading...');
+          localStorage.setItem('appVersion', version.appVersion);
+          location.reload(true);
+        }
+      })
+      .catch(err => console.error('Version check failed', err));
+  })();
+</script>
+
+  
 </body>
 
 </html>
